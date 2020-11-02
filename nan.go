@@ -9,6 +9,10 @@ type Validator interface {
 	IsValid() bool
 }
 
+type Zeroer interface {
+	IsZero() bool
+}
+
 // NullInt64 - nullable int64
 //easyjson:skip
 type NullInt64 struct {
@@ -18,6 +22,10 @@ type NullInt64 struct {
 
 func (n NullInt64) IsValid() bool {
 	return n.Valid
+}
+
+func (n NullInt64) IsZero() bool {
+	return !n.Valid
 }
 
 func (n NullInt64) IsDefined() bool {
@@ -35,6 +43,10 @@ func (n NullInt32) IsValid() bool {
 	return n.Valid
 }
 
+func (n NullInt32) IsZero() bool {
+	return !n.Valid
+}
+
 func (n NullInt32) IsDefined() bool {
 	return n.Valid
 }
@@ -48,6 +60,10 @@ type NullInt16 struct {
 
 func (n NullInt16) IsValid() bool {
 	return n.Valid
+}
+
+func (n NullInt16) IsZero() bool {
+	return !n.Valid
 }
 
 func (n NullInt16) IsDefined() bool {
@@ -65,6 +81,10 @@ func (n NullInt8) IsValid() bool {
 	return n.Valid
 }
 
+func (n NullInt8) IsZero() bool {
+	return !n.Valid
+}
+
 func (n NullInt8) IsDefined() bool {
 	return n.Valid
 }
@@ -78,6 +98,10 @@ type NullInt struct {
 
 func (n NullInt) IsValid() bool {
 	return n.Valid
+}
+
+func (n NullInt) IsZero() bool {
+	return !n.Valid
 }
 
 func (n NullInt) IsDefined() bool {
@@ -95,6 +119,10 @@ func (n NullTime) IsValid() bool {
 	return n.Valid
 }
 
+func (n NullTime) IsZero() bool {
+	return !n.Valid
+}
+
 func (n NullTime) IsDefined() bool {
 	return n.Valid
 }
@@ -108,6 +136,10 @@ type NullString struct {
 
 func (n NullString) IsValid() bool {
 	return n.Valid
+}
+
+func (n NullString) IsZero() bool {
+	return !n.Valid
 }
 
 func (n NullString) IsDefined() bool {
@@ -125,6 +157,10 @@ func (n NullBool) IsValid() bool {
 	return n.Valid
 }
 
+func (n NullBool) IsZero() bool {
+	return !n.Valid
+}
+
 func (n NullBool) IsDefined() bool {
 	return n.Valid
 }
@@ -140,6 +176,10 @@ func (n NullFloat64) IsValid() bool {
 	return n.Valid
 }
 
+func (n NullFloat64) IsZero() bool {
+	return !n.Valid
+}
+
 func (n NullFloat64) IsDefined() bool {
 	return n.Valid
 }
@@ -153,6 +193,10 @@ type NullFloat32 struct {
 
 func (n NullFloat32) IsValid() bool {
 	return n.Valid
+}
+
+func (n NullFloat32) IsZero() bool {
+	return !n.Valid
 }
 
 func (n NullFloat32) IsDefined() bool {
