@@ -37,4 +37,5 @@ func TestHelpers(t *testing.T) {
 	assert.Equal(t, NullInt16{Int16: 1, Valid: true}, Int16(1))
 	assert.Equal(t, NullInt32{Int32: 1, Valid: true}, Int32(1))
 	assert.Equal(t, NullInt{Int: 1, Valid: true}, Int(1))
+	assert.Equal(t, NullDuration{Duration: time.Duration(1), Valid: true}, Duration(1))
 }

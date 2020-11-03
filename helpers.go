@@ -92,6 +92,11 @@ func Time(v time.Time) NullTime {
 	return NullTime{Time: v, Valid: true}
 }
 
+// Duration - converts int64 to NullDuration
+func Duration(v int64) NullDuration {
+	return NullDuration{Duration: time.Duration(v), Valid: true}
+}
+
 // Float64 - converts float64 to NullFloat64
 func Float64(v float64) NullFloat64 {
 	return NullFloat64{Float64: v, Valid: true}
