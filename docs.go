@@ -1,9 +1,9 @@
 /*
-Package nan - Zero allocation Nullable structures in one library with handy conversion functions,
+Package jawn - Zero allocation Nullable structures in one library with handy conversion functions,
 marshallers and unmarshallers.
 
 Features:
-- short name "nan"
+- short name "jawn"
 - handy conversion functions
 - select which marshalers you want and limit dependencies to only those you actually need
 
@@ -35,7 +35,7 @@ JSON input/output will be converted to null or non null values. Scylla and Cassa
 with gocql.
 
 	var data struct {
-		Code nan.NullString `json:"code"`
+		Code jawn.NullString `json:"code"`
 	}
 
 	b, err := jsoniter.Marshal(data)
@@ -46,9 +46,9 @@ with gocql.
 	// {"code":null}
 	fmt.Println(string(b))
 
-	data.Code = nan.String("1")
+	data.Code = jawn.String("1")
 	// Or
-	// data.Code = nan.NullString{String: "1", Valid: true}
+	// data.Code = jawn.NullString{String: "1", Valid: true}
 
 	b, err = jsoniter.Marshal(data)
 	if err != nil {
@@ -58,4 +58,4 @@ with gocql.
 	// {"code":"1"}
 	fmt.Println(string(b))
 */
-package nan
+package jawn

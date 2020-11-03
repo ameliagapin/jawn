@@ -1,4 +1,4 @@
-package nan
+package jawn
 
 import (
 	"database/sql"
@@ -178,7 +178,7 @@ func conversionTests() []conversionTest {
 		{s: int64(123), d: new(userDefined), wantusrdef: 123},
 		{s: "1.5", d: new(userDefined), wantusrdef: 1.5},
 		{s: []byte{1, 2, 3}, d: new(userDefinedSlice),
-			wanterr: `unsupported Scan, storing driver.Value type []uint8 into type *nan.userDefinedSlice`},
+			wanterr: `unsupported Scan, storing driver.Value type []uint8 into type *jawn.userDefinedSlice`},
 		{s: "str", d: new(userDefinedString), wantusrstr: "str"},
 
 		// Other errors
@@ -354,7 +354,7 @@ func TestRawBytesAllocs(t *testing.T) {
 		if err := convertAssign(&buf, in); err != nil {
 			t.Fatalf("%s: convertAssign = %v", name, err)
 		}
-		
+
 		match := len(buf) == len(want)
 		if match {
 			for i, b := range buf {

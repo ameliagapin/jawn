@@ -1,4 +1,4 @@
-package nan
+package jawn
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 
 func init() {
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullBool",
+		"jawn.NullBool",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -20,7 +20,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullBool",
+		"jawn.NullBool",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullBool)(ptr))
 
@@ -37,7 +37,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullFloat32",
+		"jawn.NullFloat32",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -47,7 +47,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullFloat32",
+		"jawn.NullFloat32",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullFloat32)(ptr))
 
@@ -64,7 +64,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullFloat64",
+		"jawn.NullFloat64",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -74,7 +74,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullFloat64",
+		"jawn.NullFloat64",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullFloat64)(ptr))
 
@@ -91,7 +91,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullInt",
+		"jawn.NullInt",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -101,7 +101,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullInt",
+		"jawn.NullInt",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullInt)(ptr))
 
@@ -118,7 +118,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullInt8",
+		"jawn.NullInt8",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -128,7 +128,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullInt8",
+		"jawn.NullInt8",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullInt8)(ptr))
 
@@ -145,7 +145,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullInt16",
+		"jawn.NullInt16",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -155,7 +155,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullInt16",
+		"jawn.NullInt16",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullInt16)(ptr))
 
@@ -172,7 +172,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullInt32",
+		"jawn.NullInt32",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -182,7 +182,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullInt32",
+		"jawn.NullInt32",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullInt32)(ptr))
 
@@ -199,7 +199,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullInt64",
+		"jawn.NullInt64",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -209,7 +209,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullInt64",
+		"jawn.NullInt64",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullInt64)(ptr))
 
@@ -226,7 +226,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullString",
+		"jawn.NullString",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -236,7 +236,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullString",
+		"jawn.NullString",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullString)(ptr))
 
@@ -253,7 +253,7 @@ func init() {
 	)
 
 	jsoniter.RegisterTypeDecoderFunc(
-		"nan.NullTime",
+		"jawn.NullTime",
 		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 			if iter.ReadNil() {
 				return
@@ -276,7 +276,7 @@ func init() {
 		},
 	)
 	jsoniter.RegisterTypeEncoderFunc(
-		"nan.NullTime",
+		"jawn.NullTime",
 		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			t := *((*NullTime)(ptr))
 

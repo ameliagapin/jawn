@@ -1,4 +1,4 @@
-package nan
+package jawn
 
 import (
 	json "encoding/json"
@@ -11,50 +11,50 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type jsonNanCoder interface {
+type jsonJawnCoder interface {
 	MarshalJSON() ([]byte, error)
 	UnmarshalJSON(data []byte) error
 	MarshalEasyJSON(out *jwriter.Writer)
 	UnmarshalEasyJSON(in *jlexer.Lexer)
 }
 
-func doJSONTest(t *testing.T, val1, val2 interface{}, nanVal1, nanVal2 jsonNanCoder) {
-	encodedNanJSON, err := json.Marshal(nanVal1)
+func doJSONTest(t *testing.T, val1, val2 interface{}, jawnVal1, jawnVal2 jsonJawnCoder) {
+	encodedJawnJSON, err := json.Marshal(jawnVal1)
 	assert.NoError(t, err)
 
 	encodedValJSON, err := json.Marshal(val1)
 	assert.NoError(t, err)
 
-	assert.Equal(t, encodedNanJSON, encodedValJSON)
+	assert.Equal(t, encodedJawnJSON, encodedValJSON)
 
-	encodedValJsoniter, err := jsoniter.Marshal(nanVal1)
+	encodedValJsoniter, err := jsoniter.Marshal(jawnVal1)
 	assert.NoError(t, err)
 
-	assert.Equal(t, encodedNanJSON, encodedValJsoniter)
+	assert.Equal(t, encodedJawnJSON, encodedValJsoniter)
 
 	w := jwriter.Writer{}
 
-	nanVal1.MarshalEasyJSON(&w)
+	jawnVal1.MarshalEasyJSON(&w)
 	assert.NoError(t, w.Error)
 
-	assert.Equal(t, encodedNanJSON, w.Buffer.BuildBytes())
+	assert.Equal(t, encodedJawnJSON, w.Buffer.BuildBytes())
 
-	err = json.Unmarshal(encodedNanJSON, nanVal2)
+	err = json.Unmarshal(encodedJawnJSON, jawnVal2)
 	assert.NoError(t, err)
 
-	assert.Equal(t, nanVal1, nanVal2)
+	assert.Equal(t, jawnVal1, jawnVal2)
 
-	err = jsoniter.Unmarshal(encodedNanJSON, nanVal2)
+	err = jsoniter.Unmarshal(encodedJawnJSON, jawnVal2)
 	assert.NoError(t, err)
 
-	assert.Equal(t, nanVal1, nanVal2)
+	assert.Equal(t, jawnVal1, jawnVal2)
 
-	r := jlexer.Lexer{Data: encodedNanJSON}
+	r := jlexer.Lexer{Data: encodedJawnJSON}
 
-	nanVal2.UnmarshalEasyJSON(&r)
+	jawnVal2.UnmarshalEasyJSON(&r)
 	assert.NoError(t, r.Error())
 
-	assert.Equal(t, nanVal1, nanVal2)
+	assert.Equal(t, jawnVal1, jawnVal2)
 }
 
 func TestJSONNullBool(t *testing.T) {
@@ -185,9 +185,9 @@ func TestJSONNullTime(t *testing.T) {
 
 	r := jlexer.Lexer{Data: []byte("\"wrong\"")}
 
-	var nanVal NullTime
+	var jawnVal NullTime
 
-	nanVal.UnmarshalEasyJSON(&r)
+	jawnVal.UnmarshalEasyJSON(&r)
 	assert.Error(t, r.Error())
 }
 
