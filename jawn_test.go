@@ -1,4 +1,4 @@
-package nan
+package jawn
 
 import (
 	"testing"
@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNanValidator(t *testing.T) {
+func TestJawnValidator(t *testing.T) {
 	nullValues := []Validator{
 		NullInt64{},
 		NullInt32{},
@@ -43,7 +43,7 @@ func TestNanValidator(t *testing.T) {
 	}
 }
 
-func TestNanDefined(t *testing.T) {
+func TestJawnDefined(t *testing.T) {
 	nullValues := []easyjson.Optional{
 		NullInt64{},
 		NullInt32{},
@@ -78,7 +78,7 @@ func TestNanDefined(t *testing.T) {
 	}
 }
 
-func TestNanZeroer(t *testing.T) {
+func TestJawnZeroer(t *testing.T) {
 	nullValues := []Zeroer{
 		NullInt64{},
 		NullInt32{},

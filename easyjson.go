@@ -1,4 +1,4 @@
-package nan
+package jawn
 
 import (
 	"time"

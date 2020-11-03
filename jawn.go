@@ -1,16 +1,25 @@
-package nan
+package jawn
 
-import "time"
+import (
+	"time"
 
-//go:generate pkger -o cmd/nan
+	"go.mongodb.org/mongo-driver/bson/bsontype"
+)
 
-// Validator is implemented by all nan types and returns Valid field
+//go:generate pkger -o cmd/jawn
+
+// Validator is implemented by all jawn types and returns Valid field
 type Validator interface {
 	IsValid() bool
 }
 
 type Zeroer interface {
 	IsZero() bool
+}
+
+type Mashaler interface {
+	MarshalBSONValue() (bsontype.Type, []byte, error)
+	UnmarshalBSONValue(bType bsontype.Type, bBytes []byte) error
 }
 
 // NullInt64 - nullable int64
