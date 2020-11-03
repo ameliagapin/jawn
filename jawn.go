@@ -136,6 +136,25 @@ func (n NullTime) IsDefined() bool {
 	return n.Valid
 }
 
+// NullDuration - nullable time.Duration
+//easyjson:skip
+type NullDuration struct {
+	Duration time.Duration
+	Valid    bool // Valid is true if Duration is not NULL
+}
+
+func (n NullDuration) IsValid() bool {
+	return n.Valid
+}
+
+func (n NullDuration) IsZero() bool {
+	return !n.Valid
+}
+
+func (n NullDuration) IsDefined() bool {
+	return n.Valid
+}
+
 // NullString - nullable string
 //easyjson:skip
 type NullString struct {

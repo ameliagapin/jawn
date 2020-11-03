@@ -218,6 +218,26 @@ func (n NullTime) Value() (driver.Value, error) {
 	return n.Time, nil
 }
 
+func (n *NullDuration) Scan(value interface{}) error {
+	if value == nil {
+		n.Duration, n.Valid = time.Duration(0), false
+		return nil
+	}
+
+	n.Valid = true
+
+	return convertAssign(&n.Duration, value)
+}
+
+// Value implements the driver Valuer interface.
+func (n NullDuration) Value() (driver.Value, error) {
+	if !n.Valid {
+		return nil, nil
+	}
+
+	return n.Duration, nil
+}
+
 func (n *initialTemplateType) Scan(value interface{}) error {
 	// Function only for code validity
 	return nil

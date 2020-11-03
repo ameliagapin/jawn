@@ -20,6 +20,7 @@ func TestJawnValidator(t *testing.T) {
 		NullFloat32{},
 		NullString{},
 		NullTime{},
+		NullDuration{},
 	}
 	nonnullvalues := []Validator{
 		NullInt64{Valid: true, Int64: 1},
@@ -32,6 +33,7 @@ func TestJawnValidator(t *testing.T) {
 		NullFloat32{Valid: true, Float32: 1},
 		NullString{Valid: true, String: "1"},
 		NullTime{Valid: true, Time: time.Now()},
+		NullDuration{Valid: true, Duration: 1},
 	}
 
 	for _, v := range nullValues {
@@ -55,6 +57,7 @@ func TestJawnDefined(t *testing.T) {
 		NullFloat32{},
 		NullString{},
 		NullTime{},
+		NullDuration{},
 	}
 	nonnullvalues := []easyjson.Optional{
 		NullInt64{Valid: true, Int64: 1},
@@ -67,6 +70,7 @@ func TestJawnDefined(t *testing.T) {
 		NullFloat32{Valid: true, Float32: 1},
 		NullString{Valid: true, String: "1"},
 		NullTime{Valid: true, Time: time.Now()},
+		NullDuration{Valid: true, Duration: 1},
 	}
 
 	for _, v := range nullValues {
@@ -90,6 +94,7 @@ func TestJawnZeroer(t *testing.T) {
 		NullFloat32{},
 		NullString{},
 		NullTime{},
+		NullDuration{},
 	}
 	nonnullvalues := []Zeroer{
 		NullInt64{Valid: true, Int64: 1},
@@ -102,6 +107,7 @@ func TestJawnZeroer(t *testing.T) {
 		NullFloat32{Valid: true, Float32: 1},
 		NullString{Valid: true, String: "1"},
 		NullTime{Valid: true, Time: time.Now()},
+		NullDuration{Valid: true, Duration: 1},
 	}
 
 	for _, v := range nullValues {

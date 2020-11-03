@@ -191,18 +191,30 @@ func TestJSONNullTime(t *testing.T) {
 	assert.Error(t, r.Error())
 }
 
+func TestJSONNullDuration(t *testing.T) {
+	v1, v2 := time.Duration(7676), time.Duration(7676)
+	doJSONTest(t, v1, v2, &NullDuration{Duration: v1, Valid: true}, &NullDuration{})
+
+	doJSONTest(t, nil, nil, &NullDuration{Valid: false}, &NullDuration{})
+	doJSONTest(t, nil, nil, &NullDuration{Valid: false}, &NullDuration{Valid: true})
+
+	v := NullDuration{}
+	assert.Error(t, json.Unmarshal([]byte("\"wrong\""), &v))
+}
+
 func TestOmitempty(t *testing.T) {
 	var decoded struct {
-		Bool    NullBool    `json:"bool,omitempty"`
-		Float32 NullFloat32 `json:"float32,omitempty"`
-		Float64 NullFloat64 `json:"float64,omitempty"`
-		Int     NullInt     `json:"int,omitempty"`
-		Int8    NullInt8    `json:"int8,omitempty"`
-		Int16   NullInt16   `json:"int16,omitempty"`
-		Int32   NullInt32   `json:"int32,omitempty"`
-		Int64   NullInt64   `json:"int64,omitempty"`
-		String  NullString  `json:"string,omitempty"`
-		Time    NullTime    `json:"time,omitempty"`
+		Bool     NullBool     `json:"bool,omitempty"`
+		Float32  NullFloat32  `json:"float32,omitempty"`
+		Float64  NullFloat64  `json:"float64,omitempty"`
+		Int      NullInt      `json:"int,omitempty"`
+		Int8     NullInt8     `json:"int8,omitempty"`
+		Int16    NullInt16    `json:"int16,omitempty"`
+		Int32    NullInt32    `json:"int32,omitempty"`
+		Int64    NullInt64    `json:"int64,omitempty"`
+		String   NullString   `json:"string,omitempty"`
+		Time     NullTime     `json:"time,omitempty"`
+		Duration NullDuration `json:"duration,omitempty"`
 	}
 
 	encoded, err := jsoniter.MarshalToString(decoded)

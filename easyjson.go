@@ -243,6 +243,29 @@ func (n *NullTime) UnmarshalEasyJSON(in *jlexer.Lexer) {
 	*n = NullTime{Time: res, Valid: true}
 }
 
+// MarshalEasyJSON - marshaller for easyjson
+func (n NullDuration) MarshalEasyJSON(out *jwriter.Writer) {
+	if !n.Valid {
+		out.RawString("null")
+		return
+	}
+
+	out.Int64(n.Duration.Nanoseconds())
+}
+
+// UnmarshalEasyJSON - unmarshaller for easyjson
+func (n *NullDuration) UnmarshalEasyJSON(in *jlexer.Lexer) {
+	if in.IsNull() {
+		*n = NullDuration{}
+
+		in.Skip()
+
+		return
+	}
+
+	*n = NullDuration{Duration: time.Duration(in.Int64()), Valid: true}
+}
+
 func (n initialTemplateType) MarshalEasyJSON(out *jwriter.Writer) {
 	// Function only for code validity
 }

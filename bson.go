@@ -149,3 +149,17 @@ func (n *NullTime) UnmarshalBSONValue(bType bsontype.Type, bBytes []byte) error 
 
 	return fmt.Errorf("Cannot unmarshal %s into jawn.Time", bType)
 }
+
+func (n NullDuration) MarshalBSONValue() (bsontype.Type, []byte, error) {
+	return bson.MarshalValue(n.Duration)
+}
+
+func (n *NullDuration) UnmarshalBSONValue(bType bsontype.Type, bBytes []byte) error {
+	rawValue := bson.RawValue{Type: bType, Value: bBytes}
+	if err := rawValue.Unmarshal(&n.Duration); err == nil {
+		n.Valid = true
+		return nil
+	}
+
+	return fmt.Errorf("Cannot unmarshal %s into jawn.Duration", bType)
+}

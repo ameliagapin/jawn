@@ -291,4 +291,32 @@ func init() {
 			return !((*NullTime)(ptr)).Valid
 		},
 	)
+
+	jsoniter.RegisterTypeDecoderFunc(
+		"jawn.NullDuration",
+		func(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+			if iter.ReadNil() {
+				return
+			}
+
+			*((*NullDuration)(ptr)) = NullDuration{Duration: time.Duration(iter.ReadInt64()), Valid: true}
+		},
+	)
+	jsoniter.RegisterTypeEncoderFunc(
+		"jawn.NullDuration",
+		func(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+			t := *((*NullDuration)(ptr))
+
+			if !t.Valid {
+				stream.WriteNil()
+				return
+			}
+
+			stream.WriteInt64(t.Duration.Nanoseconds())
+		},
+		func(ptr unsafe.Pointer) bool {
+			return !((*NullDuration)(ptr)).Valid
+		},
+	)
+
 }

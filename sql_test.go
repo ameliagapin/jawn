@@ -113,6 +113,13 @@ func TestSQLNullTime(t *testing.T) {
 	doSQLTest(t, nil, nil, &NullTime{Valid: false}, &NullTime{})
 	doSQLTest(t, nil, nil, &NullTime{Valid: false}, &NullTime{Valid: true})
 }
+func TestSQLNullDuration(t *testing.T) {
+	v1, v2 := time.Duration(7676), time.Duration(7676)
+	doSQLTest(t, v1, v2, &NullDuration{Duration: v1, Valid: true}, &NullDuration{})
+
+	doSQLTest(t, nil, nil, &NullDuration{Valid: false}, &NullDuration{})
+	doSQLTest(t, nil, nil, &NullDuration{Valid: false}, &NullDuration{Valid: true})
+}
 
 func TestSQLInitialTemplateType(t *testing.T) {
 	v1, v2 := initialTemplateType(""), initialTemplateType("")

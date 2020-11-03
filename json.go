@@ -290,3 +290,31 @@ func (n *NullTime) UnmarshalJSON(data []byte) error {
 
 	return nil
 }
+
+// MarshalJSON - marshaller for json
+func (n NullDuration) MarshalJSON() ([]byte, error) {
+	if !n.Valid {
+		return []byte("null"), nil
+	}
+
+	return json.Marshal(n.Duration)
+}
+
+// UnmarshalJSON - unmarshaller for json
+func (n *NullDuration) UnmarshalJSON(data []byte) error {
+	if bytes.Equal(data, []byte("null")) {
+		*n = NullDuration{}
+		return nil
+	}
+
+	var res time.Duration
+
+	err := json.Unmarshal(data, &res)
+	if err != nil {
+		return err
+	}
+
+	*n = NullDuration{Duration: res, Valid: true}
+
+	return nil
+}
