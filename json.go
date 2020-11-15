@@ -25,13 +25,21 @@ func (n *NullBool) UnmarshalJSON(data []byte) error {
 	var res bool
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullBool{Bool: res, Valid: true}
+		return nil
 	}
 
-	*n = NullBool{Bool: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Bool  bool `json:"bool"`
+		Valid bool `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullBool{Bool: res2.Bool, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -53,13 +61,21 @@ func (n *NullFloat32) UnmarshalJSON(data []byte) error {
 	var res float32
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullFloat32{Float32: res, Valid: true}
+		return nil
 	}
 
-	*n = NullFloat32{Float32: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Float32 float32 `json:"float32"`
+		Valid   bool    `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullFloat32{Float32: res2.Float32, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -81,13 +97,21 @@ func (n *NullFloat64) UnmarshalJSON(data []byte) error {
 	var res float64
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullFloat64{Float64: res, Valid: true}
+		return nil
 	}
 
-	*n = NullFloat64{Float64: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Float64 float64 `json:"float64"`
+		Valid   bool    `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullFloat64{Float64: res2.Float64, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -109,13 +133,21 @@ func (n *NullInt) UnmarshalJSON(data []byte) error {
 	var res int
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullInt{Int: res, Valid: true}
+		return nil
 	}
 
-	*n = NullInt{Int: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Int   int  `json:"int"`
+		Valid bool `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullInt{Int: res2.Int, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -137,13 +169,21 @@ func (n *NullInt8) UnmarshalJSON(data []byte) error {
 	var res int8
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullInt8{Int8: res, Valid: true}
+		return nil
 	}
 
-	*n = NullInt8{Int8: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Int8  int8 `json:"int8"`
+		Valid bool `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullInt8{Int8: res2.Int8, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -165,13 +205,21 @@ func (n *NullInt16) UnmarshalJSON(data []byte) error {
 	var res int16
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullInt16{Int16: res, Valid: true}
+		return nil
 	}
 
-	*n = NullInt16{Int16: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Int16 int16 `json:"int16"`
+		Valid bool  `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullInt16{Int16: res2.Int16, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -193,13 +241,21 @@ func (n *NullInt32) UnmarshalJSON(data []byte) error {
 	var res int32
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullInt32{Int32: res, Valid: true}
+		return nil
 	}
 
-	*n = NullInt32{Int32: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Int32 int32 `json:"int32"`
+		Valid bool  `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullInt32{Int32: res2.Int32, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -221,13 +277,21 @@ func (n *NullInt64) UnmarshalJSON(data []byte) error {
 	var res int64
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullInt64{Int64: res, Valid: true}
+		return nil
 	}
 
-	*n = NullInt64{Int64: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Int64 int64 `json:"int64"`
+		Valid bool  `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullInt64{Int64: res2.Int64, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -249,13 +313,21 @@ func (n *NullString) UnmarshalJSON(data []byte) error {
 	var res string
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullString{String: res, Valid: true}
+		return nil
 	}
 
-	*n = NullString{String: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		String string `json:"string"`
+		Valid  bool   `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullString{String: res2.String, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -274,21 +346,24 @@ func (n *NullTime) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var dec string
+	var res time.Time
 
-	err := json.Unmarshal(data, &dec)
-	if err != nil {
-		return err
+	err := json.Unmarshal(data, &res)
+	if err == nil {
+		*n = NullTime{Time: res, Valid: true}
+		return nil
 	}
 
-	res, err := time.Parse(time.RFC3339Nano, string(dec))
-	if err != nil {
-		return err
+	var res2 struct {
+		Time  time.Time `json:"time"`
+		Valid bool      `json:"valid"`
 	}
-
-	*n = NullTime{Time: res, Valid: true}
-
-	return nil
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullTime{Time: res2.Time, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
 
 // MarshalJSON - marshaller for json
@@ -310,11 +385,19 @@ func (n *NullDuration) UnmarshalJSON(data []byte) error {
 	var res time.Duration
 
 	err := json.Unmarshal(data, &res)
-	if err != nil {
-		return err
+	if err == nil {
+		*n = NullDuration{Duration: res, Valid: true}
+		return nil
 	}
 
-	*n = NullDuration{Duration: res, Valid: true}
-
-	return nil
+	var res2 struct {
+		Duration time.Duration `json:"duration"`
+		Valid    bool          `json:"valid"`
+	}
+	err = json.Unmarshal(data, &res2)
+	if err == nil {
+		*n = NullDuration{Duration: res2.Duration, Valid: res2.Valid}
+		return nil
+	}
+	return err
 }
